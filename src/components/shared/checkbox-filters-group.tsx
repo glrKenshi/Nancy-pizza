@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent, useState } from "react";
-import { Input } from "../ui";
+import { Input, Skeleton } from "../ui";
 import { FilterCheckbox, FilterCheckboxProps } from "./filter-checkbox";
 
 type Item = FilterCheckboxProps
@@ -13,8 +13,10 @@ interface Props {
     defaultItems?: Item[];
     limit?: number;
     searchInputPlaceholder?: string;
-    onChange?: (values: string[]) => void;
-    defaultValue?: string[]
+    loading?: boolean;
+    onClickCheckbox?: (id: string) => void;
+    selectedIds?: Set<string>;
+    defaultValue?: string[];
 }
 
 export const CheckboxFiltersGroup = ({
@@ -24,7 +26,9 @@ export const CheckboxFiltersGroup = ({
     limit = 5,
     searchInputPlaceholder = 'Поиск...',
     className,
-    onChange,
+    loading,
+    onClickCheckbox,
+    selectedIds,
     defaultValue,
 }: Props) => {
 
@@ -35,6 +39,20 @@ export const CheckboxFiltersGroup = ({
 
     const onChangeSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
+    }
+
+    if (loading) {
+        return (
+            <div className={className}>
+                <p className="font-bold mb-3">{title}</p>
+
+                {Array.from({ length: limit }, (_, index) => (
+                    <Skeleton key={index} className="h-6 mb-4 rounded-[8px]" />
+                ))}
+
+                <Skeleton className="h-6 mb-4 w-28 rounded-[8px]" />
+            </div>
+        )
     }
 
     return (
@@ -59,8 +77,8 @@ export const CheckboxFiltersGroup = ({
                         text={item.text}
                         value={item.value}
                         endAdornment={item.endAdornment}
-                        checked={false}
-                        onCheckedChange={(ids) => console.log(ids)}
+                        checked={selectedIds?.has(item.value)}
+                        onCheckedChange={() => onClickCheckbox?.(item.value)}
                     />
                 ))}
             </div>
