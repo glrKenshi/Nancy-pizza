@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { ArrowUpDown } from "lucide-react"
 
 interface Props {
-    className?: string;
+    className?: 'string'
 }
 
 export const SortPopup = ({ className }: Props) => {

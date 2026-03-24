@@ -1,35 +1,30 @@
-import { Ingredient } from "@/prisma/generated/client/client";
-import { Api } from "@/services/api-client";
-import { useEffect, useState } from "react";
+import { Ingredient } from "@/prisma/generated/client/client"
+import { Api } from "@/services/api-client"
+import { useEffect, useState } from "react"
 import { useSet } from "react-use";
 
-export interface UseFilterIngredientsResult {
-  ingredients: Ingredient[];
-  loading: boolean;
-  selectedIds: Set<string>;
-  onAddId: (id: string) => void;
+
+interface IUseFilterIngredients {
+    ingredients: Ingredient[];
+    loading: boolean;
 }
 
-export function useFilterIngredients(): UseFilterIngredientsResult {
-  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedIds, { toggle }] = useSet(new Set<string>());
+export const useFilterIngredients = (): IUseFilterIngredients => {
 
-  useEffect(() => {
-    setLoading(true);
+    const [ingredients, setIngredients] = useState<Ingredient[]>([])
+    const [loading, setLoading] = useState(true)
 
-    Api.ingredients
-      .getAll()
-      .then((items) => {
-        setIngredients(items);
-      })
-      .catch((e) => console.log(e))
-      .finally(() => setLoading(false));
-  }, []);
+    const [set, { toggle }] = useSet(new Set<string>([]))
 
-  const onAddId = (id: string) => {
-    toggle(id);
-  };
+    useEffect(() => {
+        setLoading(true)
 
-  return { ingredients, loading, selectedIds, onAddId };
+        Api.ingredients.getAll().then(items => {
+            setIngredients(items)
+        }).catch((e) => console.log(e))
+            .finally(() => setLoading(false))
+
+    }, [])
+
+    return { ingredients, loading }
 }
