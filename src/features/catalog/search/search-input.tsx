@@ -1,12 +1,10 @@
 'use client';
 
 import { cn } from "@/lib/utils"
-import { Product } from "@/prisma/generated/client/client";
-import { Api } from "@/services/api-client";
 import { Search } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link";
-import { useRef, useState } from "react";
-import { useClickAway, useDebounce } from "react-use";
+import { useProductSearch } from "./hooks/use-product-search";
 
 interface Props {
     className?: string
@@ -14,26 +12,15 @@ interface Props {
 
 export const SearchInput = ({ className }: Props) => {
 
-    const [searchQuery, setSearchQuery] = useState('')
-    const [focused, setFocused] = useState(false)
-    const [products, setProducts] = useState<Product[]>([])
-
-    const ref = useRef(null)
-
-    const onCleanSearchQuery = () => {
-        setSearchQuery("")
-    }
-
-    useClickAway(ref, () => {
-        setFocused(false);
-    })
-
-    useDebounce(() => {
-        Api.products.search(searchQuery).then(items => setProducts(items))
-    },
-        250,
-        [searchQuery]
-    )
+    const {
+        searchQuery,
+        setSearchQuery,
+        focused,
+        setFocused,
+        products,
+        ref,
+        onCleanSearchQuery,
+    } = useProductSearch()
 
     return (
         <>
@@ -61,7 +48,13 @@ export const SearchInput = ({ className }: Props) => {
                             key={product.id}
                             className="flex items-center gap-3 w-full px-3 py-2 hover:bg-primary/10"
                             href={`/product/${product.id}`}>
-                            <img className="rounded-sm h-8 w-8" src={product.imageUrl} alt={product.name} />
+                            <Image
+                                src={product.imageUrl}
+                                alt={product.name}
+                                width={32}
+                                height={32}
+                                className="rounded-sm h-8 w-8 object-cover"
+                            />
                             <span>{product.name}</span>
                         </Link>
                     ))}

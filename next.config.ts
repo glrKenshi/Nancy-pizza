@@ -5,7 +5,18 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
 
   images: {
-    domains: ["dodopizza-a.akamaihd.net"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dodopizza-a.akamaihd.net",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "media.dodostatic.net",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

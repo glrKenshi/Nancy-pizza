@@ -1,4 +1,6 @@
-import { Categories, SortPopup, Container } from "@/components/shared";
+import { Container } from "@/features/layout";
+import { Categories } from "./categories";
+import { SortPopup } from "./sort-popup";
 import { cn } from "@/lib/utils";
 
 interface Props {

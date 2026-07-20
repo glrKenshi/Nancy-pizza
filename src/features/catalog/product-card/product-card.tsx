@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Title } from "./title";
-import { Button } from "../ui";
+import Image from "next/image";
+import { Title } from "@/features/layout";
+import { Button } from "@/components/ui";
 import { Plus } from "lucide-react";
 
 interface Props {
@@ -16,8 +16,15 @@ export const ProductCard = ({ id, name, price, imageUrl, className }: Props) => 
     return (
         <div className={className}>
             <Link href={`/product/${id}`}>
-                <div className="flex justify-center p-6 bg-secondary rounded-lg h-[260px]">
-                    <img src={imageUrl} alt={name} className="w-[215px] h-[215px]" />
+                <div className="relative flex justify-center p-6 bg-amber-50/80 rounded-lg h-[260px]">
+                    <Image
+                        src={imageUrl}
+                        alt={name}
+                        width={215}
+                        height={215}
+                        className="h-[215px] w-[215px] object-contain"
+                        sizes="215px"
+                    />
                 </div>
 
                 <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
@@ -40,5 +47,3 @@ export const ProductCard = ({ id, name, price, imageUrl, className }: Props) => 
         </div>
     );
 }
-
-

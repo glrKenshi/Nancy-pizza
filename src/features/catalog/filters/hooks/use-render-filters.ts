@@ -1,25 +1,22 @@
 import { Ingredient } from "@/prisma/generated/client/client"
 import { Api } from "@/services/api-client"
 import { useEffect, useState } from "react"
-import { useSet } from "react-use";
 
 
-interface IUseFilterIngredients {
+interface IUseRenderIngredients {
     ingredients: Ingredient[];
     loading: boolean;
+
 }
 
-export const useFilterIngredients = (): IUseFilterIngredients => {
+export const useRenderFilters = (): IUseRenderIngredients => {
 
     const [ingredients, setIngredients] = useState<Ingredient[]>([])
     const [loading, setLoading] = useState(true)
 
-    const [set, { toggle }] = useSet(new Set<string>([]))
-
     useEffect(() => {
-        setLoading(true)
-
         Api.ingredients.getAll().then(items => {
+            setLoading(true)
             setIngredients(items)
         }).catch((e) => console.log(e))
             .finally(() => setLoading(false))

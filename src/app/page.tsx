@@ -1,6 +1,5 @@
-import { Filters, ProductsGroupList, Title } from "@/components/shared";
-import { Container } from "@/components/shared/container";
-import { TopBar } from "@/components/shared/top-bar";
+import { Filters, ProductsGroupList, TopBar } from "@/features/catalog";
+import { Container, Title } from "@/features/layout";
 
 export default function Home() {
   return (
@@ -28,7 +27,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
@@ -38,7 +37,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
@@ -48,7 +47,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
@@ -58,7 +57,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
@@ -74,7 +73,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
@@ -84,7 +83,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
@@ -94,7 +93,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
@@ -104,7 +103,7 @@ export default function Home() {
                   {
                     id: 1,
                     name: 'Пепперони',
-                    imageUrl: 'https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a75884e0939.jpg',
+                    imageUrl: 'https://media.dodostatic.net/image/r:292x292/019afab403ed7001a6263185d978f3f5.avif',
                     items: [
                       {
                         price: 395,
